@@ -4,9 +4,27 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>CarrotGame</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/44e76333c8.js" crossorigin="anonymous"></script>
+  <script src="index.js"></script>
 </head>
 <body>
-  
+  <section class="game">
+    <header class="game__header">
+      <button class="game__btn">
+        <i class="fa-solid fa-play"></i>
+      </button>
+      <span class="game__timer">0 : 0</span>
+      <div class="game__score">6</div>
+    </header>
+    <section class="game__area"></section>
+  </section>
+  <section class="popUp">
+    <button class="popUp__again">
+      <i class="fa-solid fa-rotate-right"></i>
+    </button>
+    <div class="popUp__message">Do you wanna play one more?</div>
+  </section>
 </body>
 </html>

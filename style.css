@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+/* Universal */
+
+html {
+  width: 100vw;
+  height: 100vh;
+}
+body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+* {
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+
+/* Global */
+:root {
+  --shadow : 3px 3px 3px rgba(69, 69, 69, 0.4);
+}
+
+
+/* Game */
+.game {
+  width: 100%;
+  height: 100%;
+  background: url(./imgs/background.png) 0 0 no-repeat;
+  background-size: cover;
+}
+.game__header {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.game__btn {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: bisque;
+  border: none;
+  margin-bottom: 20px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+.game__btn > i {
+  font-size: 40px;
+  color: rgb(58, 4, 4);
+}
+.game__timer {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.game__score {
+  width: 80px;
+  height: 60px;
+  background-color: bisque;
+  border-radius: 30%;
+  font-size: 45px;
+  font-weight: 700;
+  color: rgb(39 145 255);
+  text-align: center;
+  line-height: 60px;
+  box-shadow: var(--shadow);
+}
+.game__area {
+  width: 100%;
+  height: 60%;
+}
+
+/* Pop-up */
+.popUp {
+  width: 50%;
+  height: 180px;
+  background-color: rgba(0,0,0,.4);
+  position: absolute;
+  z-index: 2;
+  bottom: 50px;
+  left: 25%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+.popUp__again {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: bisque;
+  border: none;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.popUp__again > i {
+  font-size: 30px;
+  color: rgb(58, 4, 4);
+}
+.popUp__message {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+}
