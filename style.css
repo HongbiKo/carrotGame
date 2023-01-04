@@ -34,7 +34,7 @@ body {
 }
 .game__header {
   width: 100%;
-  height: 40%;
+  height: 50%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -73,7 +73,7 @@ body {
 }
 .game__area {
   width: 100%;
-  height: 60%;
+  height: 50%;
 }
 
 /* Pop-up */
