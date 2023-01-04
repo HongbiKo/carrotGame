@@ -84,15 +84,16 @@ body {
   width: 50%;
   height: 180px;
   background-color: rgba(0,0,0,.4);
-  position: absolute;
-  z-index: 2;
-  bottom: 50px;
-  left: 25%;
+  transform: translateY(-150%);
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   border-radius: 20px;
+  margin: 0 auto;
+}
+.popUp--hide {
+  display: none;
 }
 .popUp__again {
   width: 60px;
