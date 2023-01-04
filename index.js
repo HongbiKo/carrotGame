@@ -2,11 +2,47 @@
 
 const field = document.querySelector(".game__area");
 const fieldRect = field.getBoundingClientRect();
+const startBtn = document.querySelector(".game__btn");
+const gameTimer = document.querySelector(".game__timer");
+const gameScore = document.querySelector(".game__score");
 const CARROT_SIZE = 80;
+const CARROT_COUNT = 5;
+const BUG_COUNT = 5;
+
+let started = false;
+let score = 0;
+let timer = undefined;
+
+startBtn.addEventListener("click", function () {
+  if (started) {
+    stopGame();
+  } else {
+    startGame();
+  }
+  started != started;
+});
+
+function startGame() {
+  initGame();
+  showStopBtn();
+  showTimerAndScore();
+}
+function stopGame() {}
+function showStopBtn() {
+  const icon = document.querySelector(".fa-play");
+  icon.classList.add("fa-stop");
+  icon.classList.remove("fa-play");
+}
+function showTimerAndScore() {
+  gameTimer.style.visibility = "visible";
+  gameScore.style.visibility = "visible";
+}
 
 function initGame() {
-  addItem("carrot", 5, "imgs/carrot.png");
-  addItem("bug", 5, "imgs/bug.png");
+  field.innerHTML = "";
+  gameScore.textContent = CARROT_COUNT;
+  addItem("carrot", CARROT_COUNT, "imgs/carrot.png");
+  addItem("bug", BUG_COUNT, "imgs/bug.png");
 }
 
 function addItem(className, count, path) {
@@ -31,5 +67,3 @@ function addItem(className, count, path) {
 function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
-
-initGame();

@@ -58,6 +58,7 @@ body {
   font-size: 36px;
   font-weight: 600;
   margin-bottom: 20px;
+  visibility: hidden;
 }
 .game__score {
   width: 80px;
@@ -70,6 +71,7 @@ body {
   text-align: center;
   line-height: 60px;
   box-shadow: var(--shadow);
+  visibility: hidden;
 }
 .game__area {
   width: 100%;
