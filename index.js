@@ -8,6 +8,7 @@ const gameScore = document.querySelector(".game__score");
 const CARROT_SIZE = 80;
 const CARROT_COUNT = 5;
 const BUG_COUNT = 5;
+const GAME_DURATION = 5;
 
 let started = false;
 let score = 0;
@@ -26,6 +27,7 @@ function startGame() {
   initGame();
   showStopBtn();
   showTimerAndScore();
+  startTimer();
 }
 function stopGame() {}
 function showStopBtn() {
@@ -36,6 +38,23 @@ function showStopBtn() {
 function showTimerAndScore() {
   gameTimer.style.visibility = "visible";
   gameScore.style.visibility = "visible";
+}
+function startTimer() {
+  let remainingTimeSec = GAME_DURATION;
+  updateTimerText(remainingTimeSec);
+  setInterval(function () {
+    if (remainingTimeSec <= 0) {
+      clearInterval(timer);
+      return;
+    } else {
+      updateTimerText(--remainingTimeSec);
+    }
+  }, 1000);
+}
+function updateTimerText(time) {
+  const minutes = Math.floor(time / 60);
+  const seconds = time % 60;
+  gameTimer.textContent = `${minutes} : ${seconds}`;
 }
 
 function initGame() {
