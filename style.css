@@ -74,6 +74,7 @@ body {
 .game__area {
   width: 100%;
   height: 50%;
+  position: relative;
 }
 
 /* Pop-up */
