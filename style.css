@@ -49,6 +49,10 @@ body {
   margin-bottom: 20px;
   cursor: pointer;
   box-shadow: var(--shadow);
+  transition: transform 300ms ease-in;
+}
+.game__btn:hover {
+  transform: scale(1.1);
 }
 .game__btn > i {
   font-size: 40px;
@@ -59,6 +63,8 @@ body {
   font-weight: 600;
   margin-bottom: 20px;
   visibility: hidden;
+  user-select: none;
+  cursor: auto;
 }
 .game__score {
   width: 80px;
@@ -72,6 +78,8 @@ body {
   line-height: 60px;
   box-shadow: var(--shadow);
   visibility: hidden;
+  user-select: none;
+  cursor: auto;
 }
 .game__area {
   width: 100%;
@@ -113,4 +121,13 @@ body {
   font-weight: 600;
   color: white;
   text-align: center;
+}
+
+.carrot:hover,
+.bug:hover {
+  transform: scale(1.1);
+}
+.carrot,
+.bug {
+  transition: transfrom 100ms ease-in;
 }
