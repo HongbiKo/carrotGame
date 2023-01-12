@@ -1,12 +1,10 @@
 import PopUp from "./popup.js";
+import Field from "./field.js";
 
-const field = document.querySelector(".game__area");
-const fieldRect = field.getBoundingClientRect();
 const startBtn = document.querySelector(".game__btn");
 const gameTimer = document.querySelector(".game__timer");
 const gameScore = document.querySelector(".game__score");
 
-const CARROT_SIZE = 80;
 const CARROT_COUNT = 5;
 const BUG_COUNT = 5;
 const GAME_DURATION = 5;
@@ -26,7 +24,23 @@ gameFinishBanner.setClickListener(() => {
   startGame();
 });
 
-field.addEventListener("click", onFieldClick);
+const gameField = new Field(CARROT_COUNT, BUG_COUNT);
+gameField.setClickListener(onItemClick);
+
+function onItemClick(item) {
+  if (!started) {
+    return;
+  }
+  if (item === "carrot") {
+    score++;
+    updateScoreBoard();
+    if (score === CARROT_COUNT) {
+      finishGame(true);
+    }
+  } else if (item === "bug") {
+    finishGame(false);
+  }
+}
 
 startBtn.addEventListener("click", function () {
   if (started) {
@@ -100,30 +114,11 @@ function updateTimerText(time) {
 }
 
 function initGame() {
-  field.innerHTML = "";
   gameScore.textContent = CARROT_COUNT;
   score = 0;
-  addItem("carrot", CARROT_COUNT, "imgs/carrot.png");
-  addItem("bug", BUG_COUNT, "imgs/bug.png");
+  gameField.init();
 }
 
-function onFieldClick(e) {
-  if (!started) {
-    return;
-  }
-  const target = e.target;
-  if (target.matches(".carrot")) {
-    target.remove();
-    score++;
-    playSound(carrotSound);
-    updateScoreBoard();
-    if (score === CARROT_COUNT) {
-      finishGame(true);
-    }
-  } else if (target.matches(".bug")) {
-    finishGame(false);
-  }
-}
 function playSound(sound) {
   sound.currentTime = 0;
   sound.play();
@@ -133,27 +128,4 @@ function stopSound(sound) {
 }
 function updateScoreBoard() {
   gameScore.textContent = CARROT_COUNT - score;
-}
-
-function addItem(className, count, path) {
-  const x1 = 0;
-  const y1 = 0;
-  const x2 = fieldRect.width - CARROT_SIZE;
-  const y2 = fieldRect.height - CARROT_SIZE;
-
-  for (let i = 0; i < count; i++) {
-    const item = document.createElement("img");
-    item.setAttribute("class", className);
-    item.setAttribute("src", path);
-    item.style.position = "absolute";
-    const x = randomNumber(x1, x2);
-    const y = randomNumber(y1, y2);
-    item.style.left = `${x}px`;
-    item.style.top = `${y}px`;
-    field.appendChild(item);
-  }
-}
-
-function randomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
 }
