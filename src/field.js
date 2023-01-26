@@ -1,4 +1,7 @@
-const carrotSound = new Audio("./sounds/carrot_pull.mp3");
+"use strict";
+
+import * as sound from "./sound.js";
+
 const CARROT_SIZE = 80;
 
 export default class Field {
@@ -7,6 +10,13 @@ export default class Field {
     this.bugCount = bugCount;
     this.field = document.querySelector(".game__area");
     this.fieldRect = this.field.getBoundingClientRect();
+    //this binding 3가지 방법
+    // 1. this.onClick = this.onClick.bind(this);
+    /* 
+    2.this.field.addEventListener("click", (event) => {
+      this.onClick(event);
+    });
+    */
     this.field.addEventListener("click", this.onClick);
   }
 
@@ -16,7 +26,7 @@ export default class Field {
     this._addItem("bug", this.bugCount, "imgs/bug.png");
   }
 
-  setClickListener(onItemClick) {
+  setOnClickListener(onItemClick) {
     this.onItemClick = onItemClick;
   }
 
@@ -38,21 +48,17 @@ export default class Field {
       this.field.appendChild(item);
     }
   }
-
-  onClick(e) {
+  // 3.
+  onClick = (e) => {
     const target = e.target;
     if (target.matches(".carrot")) {
       target.remove();
-      playSound(carrotSound);
+      sound.playCarrot();
       this.onItemClick && this.onItemClick("carrot");
     } else if (target.matches(".bug")) {
       this.onItemClick && this.onItemClick("bug");
     }
-  }
-}
-function playSound(sound) {
-  sound.currentTime = 0;
-  sound.play();
+  };
 }
 
 function randomNumber(min, max) {
